@@ -1,7 +1,46 @@
-<!-- ... 省略 ... -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MBTI Personality Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+</head>
+<body>
+
+    <main class="main-container">
+        <div class="title-section">
+            <h1>
+                <span class="gradient-text">MBTI</span><br>
+                Personality<br>
+                Analyzer
+            </h1>
+        </div>
+
+        <div class="form-section">
+            <div class="input-card">
+                <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                <h2>ENTER MBTI TYPE</h2>
+                <p class="example-text">ESFP / INFP / ESFP,INFP</p>
+
                 <div class="input-area">
                     <input type="text" id="mbti-input" placeholder="例: INFP または ESFP,INFP">
-                    <!-- ▼▼▼ disabled属性を追加し、テキストを変更 ▼▼▼ -->
                     <button id="analyze-button" disabled>データを読み込み中...</button>
                 </div>
-<!-- ... 省略 ... -->
+                
+                <p class="powered-by">Powered by Ryoichi</p>
+                <p class="version-text">Google AI Studio Ver</p>
+            </div>
+        </div>
+    </main>
+
+    <div class="result-container">
+        <div id="result-area">
+            <!-- 分析結果がここに表示されます -->
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

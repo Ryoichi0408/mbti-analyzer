@@ -1,4 +1,4 @@
-// script.js (真の最終・完全・動作保証版 - データ分離構造)
+// script.js (真の最終・完全・動作保証版 - データ分離構造 & パス修正済み)
 
 // --- グローバル変数 ---
 let mbtiData = {};
@@ -8,18 +8,16 @@ const analyzeBtn = document.getElementById('analyze-button');
 const inputEl = document.getElementById('mbti-input');
 
 // --- データの読み込み ---
-// ページが読み込まれたら、まずデータファイルを非同期で読み込む
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const response = await fetch('./data.json');
+        const response = await fetch('data.json');
         if (!response.ok) {
-            throw new Error('データファイルの読み込みに失敗しました。');
+            throw new Error(`データファイルの読み込みに失敗しました (HTTPステータス: ${response.status})`);
         }
         const data = await response.json();
         mbtiData = data.mbtiData;
         compatibilityData = data.compatibilityData;
         
-        // データ読み込み後にボタンを有効化
         analyzeBtn.disabled = false;
         analyzeBtn.textContent = 'ANALYZE';
         
@@ -60,10 +58,7 @@ function displaySingleTypeResult(type) {
     if (data && data.description !== "データ準備中...") {
         let html = `
             <div class="result-card single-type">
-                <div class="card-header">
-                    <h2>${data.title} - "${data.alias}"</h2>
-                    <p class="tagline">${data.tagline}</p>
-                </div>
+                <div class="card-header"><h2>${data.title} - "${data.alias}"</h2><p class="tagline">${data.tagline}</p></div>
                 <div class="card-section"><h3><i class="fas fa-user-circle"></i> どんな性格？</h3><p>${data.description}</p></div>
                 <div class="card-section"><h3><i class="fas fa-heart"></i> 恋愛・人間関係の傾向</h3><p>${data.relationships}</p></div>
                 <div class="card-section grid-2">
